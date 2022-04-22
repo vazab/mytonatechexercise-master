@@ -10282,6 +10282,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1501518382}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!95 &1501762363 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3393315500599133633, guid: 21e3a95f1983675429ca17362a0aad6c, type: 3}
+  m_PrefabInstance: {fileID: 4676656099887998521}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1535927602
 GameObject:
   m_ObjectHideFlags: 0
@@ -15870,6 +15875,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.97796416
       objectReference: {fileID: 0}
+    - target: {fileID: 4544326382296255651, guid: 21e3a95f1983675429ca17362a0aad6c, type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 1501762363}
     - target: {fileID: 4676656098883435520, guid: 21e3a95f1983675429ca17362a0aad6c, type: 3}
       propertyPath: m_RootOrder
       value: 6

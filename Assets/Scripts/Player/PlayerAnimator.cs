@@ -1,32 +1,34 @@
-﻿using System;
-using MyProject.Events;
+﻿using MyProject.Events;
 using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
 {
-	public Animator Animator;
+    [SerializeField] private Animator _animator;
 
-	private void Awake()
-	{
-		EventBus<PlayerInputMessage>.Sub((message) =>
-		{
-			Animator.SetBool("IsRun", message.MovementDirection.sqrMagnitude > 0);
-		});
-		EventBus.Sub(AnimateDeath, EventBus.PLAYER_DEATH);
-	}
+    private void Awake()
+    {
+        EventBus<PlayerInputMessage>.Sub(AnimateRun);
+        EventBus.Sub(AnimateDeath, EventBus.PLAYER_DEATH);
+    }
 
-	private void OnDestroy()
-	{
+    private void OnDisable()
+    {
+        EventBus<PlayerInputMessage>.Unsub(AnimateRun);
 		EventBus.Unsub(AnimateDeath, EventBus.PLAYER_DEATH);
-	}
+    }
 
-	private void AnimateDeath()
-	{
-		Animator.SetTrigger("Death");
-	}
+    private void AnimateRun(PlayerInputMessage message)
+    {
+        _animator.SetBool("IsRun", message.MovementDirection.sqrMagnitude > 0);
+    }
 
-	public void TriggerShoot()
-	{
-		Animator.SetTrigger("Shoot");
-	}
+    private void AnimateDeath()
+    {
+        _animator.SetTrigger("Death");
+    }
+
+    public void TriggerShoot()
+    {
+        _animator.SetTrigger("Shoot");
+    }
 }
