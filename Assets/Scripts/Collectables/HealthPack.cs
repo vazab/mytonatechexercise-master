@@ -2,13 +2,14 @@
 
 public class HealthPack : MonoBehaviour
 {
-	public int Health;
+	[SerializeField] private int _health;
 
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.CompareTag("Player"))
 		{
-			other.GetComponent<Player>().Heal(Health);
+			other.GetComponent<Player>().Heal(_health);
+			
 			Destroy(gameObject);
 		}
 	}

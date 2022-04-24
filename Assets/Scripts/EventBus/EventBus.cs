@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 namespace MyProject.Events
 {
@@ -36,7 +34,7 @@ namespace MyProject.Events
 		{
 			if (@delegate != null)
 			{
-				if (!MessageHandlers.ContainsKey(index))
+				if (MessageHandlers.ContainsKey(index) == false)
 				{
 					MessageHandlers.Add(index, null);
 				}
@@ -52,6 +50,7 @@ namespace MyProject.Events
 				if (MessageHandlers.ContainsKey(index))
 				{
 					MessageHandlers[index] -= @delegate;
+					
 					if (MessageHandlers[index] == null)
 					{
 						MessageHandlers.Remove(index);

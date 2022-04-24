@@ -1,17 +1,17 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-	public int Health;
-	public int Damage;
-	public float MoveSpeed;
+	[SerializeField] private int _health;
+	[SerializeField] private int _damage;
+	[SerializeField] private float _moveSpeed;
 
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.CompareTag("Player"))
 		{
-			other.GetComponent<Player>().Upgrade(Health, Damage, MoveSpeed);
+			other.GetComponent<Player>().Upgrade(_health, _damage, _moveSpeed);
+			
 			Destroy(gameObject);
 		}
 	}

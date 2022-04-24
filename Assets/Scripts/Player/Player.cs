@@ -1,80 +1,92 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using MyProject.Events;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-	public static Player Instance;
-	public float Damage = 1;
-	public float MoveSpeed = 3.5f;
-	public float Health = 3;
-	public float MaxHealth = 3;
+    [SerializeField] private float _health = 3f;
+    [SerializeField] private float _maxHealth = 3f;
+    [SerializeField] private float _damage = 1f;
+    [SerializeField] private float _moveSpeed = 3.5f;
 
-	public Action<int> OnWeaponChange = null;
-	public Action<float, float> OnHPChange = null;
-	public Action OnUpgrade = null;
+    public static Player Instance;
 
-	private void Awake()
-	{
-		if (Instance != null)
-		{
-			DestroyImmediate(gameObject);
-		}
-		else
-		{
-			Instance = this;
-		}
-	}
+    public Action<int> WeaponChanged = null;
+    public Action<float> HealthChanged = null;
+    public Action Upgraded = null;
 
-	private void OnDestroy()
-	{
-		if (Instance == this)
-		{
-			Instance = null;
-		}
-	}
+    public float MaxHealth => _maxHealth;
+    public float Damage => _damage;
+    public float MoveSpeed => _moveSpeed;
 
-	public void TakeDamage(float amount)
-	{
-		if (Health <= 0)
-			return;
-		Health -= amount;
-		if (Health <= 0)
-		{
-			EventBus.Pub(EventBus.PLAYER_DEATH);
-		}
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
 
-		OnHPChange?.Invoke(Health, -amount);
-	}
+    private void OnDestroy()
+    {
+        if (Instance == this)
+        {
+            Instance = null;
+        }
+    }
 
-	public void Heal(float amount)
-	{
-		if (Health <= 0)
-			return;
-		Health += amount;
-		if (Health > MaxHealth)
-		{
-			Health = MaxHealth;
-		}
+    public void TakeDamage(float amount)
+    {
+        if (_health <= 0)
+        {
+            return;
+        }
+        
+		_health -= amount;
 
-		OnHPChange?.Invoke(Health, amount);
-	}
+        if (_health <= 0)
+        {
+            EventBus.Pub(EventBus.PLAYER_DEATH);
+        }
+
+        HealthChanged?.Invoke(_health);
+    }
+
+    public void Heal(float amount)
+    {
+        if (_health <= 0)
+        {
+            return;
+        }
+
+        _health += amount;
+
+        if (_health > _maxHealth)
+        {
+            _health = _maxHealth;
+        }
+
+        HealthChanged?.Invoke(_health);
+    }
 
 
-	public void Upgrade(float hp, float dmg, float ms)
-	{
-		Damage += dmg;
-		Health += hp;
-		MaxHealth += hp;
-		MoveSpeed += ms;
-		OnUpgrade?.Invoke();
-		OnHPChange?.Invoke(Health, 0);
-	}
+    public void Upgrade(float hp, float dmg, float ms)
+    {
+        _damage += dmg;
+        _health += hp;
+        _maxHealth += hp;
+        _moveSpeed += ms;
 
-	public void ChangeWeapon(int type)
-	{
-		OnWeaponChange?.Invoke(type);
-	}
+        Upgraded?.Invoke();
+        HealthChanged?.Invoke(_health);
+    }
+
+    public void ChangeWeapon(int type)
+    {
+        WeaponChanged?.Invoke(type);
+    }
 }

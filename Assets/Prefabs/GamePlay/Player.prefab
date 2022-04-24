@@ -621,10 +621,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7625363e0a26848438b4557fdb6325b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 1
+  _health: 3
+  _maxHealth: 3
+  _damage: 1
   MoveSpeed: 3.5
-  Health: 3
-  MaxHealth: 3
 --- !u!114 &4676656098883435533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -649,7 +649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce829f0604c545d796c8c85c0585d71d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animator: {fileID: 3393315500599133633}
+  _animator: {fileID: 3393315500599133633}
 --- !u!114 &4676656098883435530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -713,10 +713,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce31021e8abf40cf96b44fd4ece25d17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bar: {fileID: 4517173414755579628}
-  BarImg: {fileID: 1374325672164140156}
-  Text: {fileID: 7211429648804452570}
-  DamageText: {fileID: 3552508208379785938}
+  _text: {fileID: 7211429648804452570}
+  _barImg: {fileID: 1374325672164140156}
+  _bar: {fileID: 4517173414755579628}
+  _damageText: {fileID: 3552508208379785938}
 --- !u!114 &8531572476433862321
 MonoBehaviour:
   m_ObjectHideFlags: 0

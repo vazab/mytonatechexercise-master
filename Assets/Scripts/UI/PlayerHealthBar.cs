@@ -3,45 +3,51 @@ using UnityEngine;
 
 public class PlayerHealthBar : MonoBehaviour
 {
-	public GameObject Bar;
-	public SpriteRenderer BarImg;
-	public TMP_Text Text;
-	public TMP_Text DamageText;
-	private float maxHP;
-	private Player player;
+	[SerializeField] private TMP_Text _text;
+	[SerializeField] private SpriteRenderer _barImg;
+	[SerializeField] private GameObject _bar;
+	[SerializeField] private TMP_Text _damageText;
+
+	private Player _player;
 
 	private void Awake()
 	{
-		player = GetComponent<Player>();
-		player.OnHPChange += OnHPChange;
+		_player = GetComponent<Player>();
+		_player.HealthChanged += OnHealthChanged;
+	}
+
+	private void OnDisable()
+	{
+		_player.HealthChanged -= OnHealthChanged;
 	}
 
 	public void OnDeath()
 	{
-		Bar.SetActive(false);
+		_bar.SetActive(false);
 	}
 
 	private void LateUpdate()
 	{
-		Bar.transform.rotation = Camera.main.transform.rotation;
+		_bar.transform.rotation = Camera.main.transform.rotation;
 	}
 
-	private void OnHPChange(float health, float diff)
+	private void OnHealthChanged(float health)
 	{
-		var frac = health / player.MaxHealth;
-		Text.text = $"{health:####}/{player.MaxHealth:####}";
-		BarImg.size = new Vector2(frac, BarImg.size.y);
-		var pos = BarImg.transform.localPosition;
+		float frac = health / _player.MaxHealth;
+		_text.text = $"{health:####}/{_player.MaxHealth:####}";
+		_barImg.size = new Vector2(frac, _barImg.size.y);
+		var pos = _barImg.transform.localPosition;
 		pos.x = -(1 - frac) / 2;
-		BarImg.transform.localPosition = pos;
+		_barImg.transform.localPosition = pos;
+		
 		if (health <= 0)
 		{
-			Bar.SetActive(false);
+			OnDeath();
 		}
 	}
 
 	private void OnUpgrade()
 	{
-		DamageText.text = $"{player.Damage}";
+		_damageText.text = $"{_player.Damage}";
 	}
 }

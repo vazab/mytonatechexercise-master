@@ -3,15 +3,15 @@ using UnityEngine;
 
 public abstract class PlayerWeapon : MonoBehaviour
 {
-	public const int Rifle = 0;
-	public const int Shotgun = 1;
-	public const int AutomaticRifle = 2;
+	public const int RIFLE = 0;
+	public const int SHOTGUN = 1;
+	public const int AUTOMATIC_RIFLE = 2;
 	public abstract int Type { get; }
 	public GameObject Model;
 
 	protected virtual void Awake()
 	{
-		GetComponent<Player>().OnWeaponChange += Change;
+		GetComponent<Player>().WeaponChanged += Change;
 	}
 
 	protected virtual void OnDestroy()

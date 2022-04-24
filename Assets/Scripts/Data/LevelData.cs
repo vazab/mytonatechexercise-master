@@ -3,7 +3,7 @@ using UnityEngine;
 
 // Bonus!
 // Create and use namespace Myproject in whole solution with appropriate subspaces 
-[CreateAssetMenu(menuName = "Data/LevelData")]
+[CreateAssetMenu(menuName = "Sciptable Objects/Data/LevelData", order = 51)]
 public class LevelData : ScriptableObject
 {
 	public int Index;

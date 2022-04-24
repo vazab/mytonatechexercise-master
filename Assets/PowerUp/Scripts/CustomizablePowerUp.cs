@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class CustomizablePowerUp : MonoBehaviour {
-	
+public class CustomizablePowerUp : MonoBehaviour
+{	
 	#region Settings
 	public string powerUpName;
 	public bool isTakeable = false;
@@ -115,10 +114,5 @@ public class CustomizablePowerUp : MonoBehaviour {
 		tmp.range = this.lightRange;
 		tmp.type = LightType.Point;
 		tmp.shadows = LightShadows.Hard;
-	}
-	
-	
-	void Update () {
-	
 	}
 }

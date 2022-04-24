@@ -1,5 +1,4 @@
-﻿using System;
-using MyProject.Events;
+﻿using MyProject.Events;
 using UnityEngine;
 
 public class PlayerMover : MonoBehaviour

@@ -94,8 +94,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d81cc4a7694b6548b26e04b8efd1b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 65
-  reverse: 0
 --- !u!1 &7382990938483934281
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,9 +153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67cd765d3ff4ab5b280fc599aa84be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 1
-  Damage: 0
-  MoveSpeed: 0
+  _health: 1
+  _damage: 0
+  _moveSpeed: 0
 --- !u!1 &8990706147239034394
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,5 +264,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d81cc4a7694b6548b26e04b8efd1b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 65
-  reverse: 1

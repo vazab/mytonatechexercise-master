@@ -6,7 +6,7 @@ using UnityEngine;
 // Refactror Rifle, AutomaticRifle and Shotgun classes as you want
 public class Shotgun : PlayerWeapon
 {
-	public override int Type => PlayerWeapon.Shotgun;
+	public override int Type => PlayerWeapon.SHOTGUN;
 	public Projectile BulletPrefab;
 	public float Reload = 1f;
 	public Transform FirePoint;

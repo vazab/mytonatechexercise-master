@@ -12,7 +12,7 @@ public class ScaleParticles : MonoBehaviour
 
 	private void Update()
 	{
-		var main = _ps.main;
-		main.startSize = transform.lossyScale.magnitude;
+		var psmain = _ps.main;
+		psmain.startSize = transform.lossyScale.magnitude;
 	}
 }
