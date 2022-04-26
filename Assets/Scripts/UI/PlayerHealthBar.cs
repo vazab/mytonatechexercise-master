@@ -48,6 +48,6 @@ public class PlayerHealthBar : MonoBehaviour
 
 	private void OnUpgrade()
 	{
-		_damageText.text = $"{_player.Damage}";
+		_damageText.text = $"{_player.DamageMultiplier}";
 	}
 }

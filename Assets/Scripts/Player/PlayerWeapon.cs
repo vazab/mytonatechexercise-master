@@ -1,34 +1,54 @@
 ﻿using MyProject.Events;
 using UnityEngine;
 
+[RequireComponent(typeof(Player), typeof(PlayerAnimator))]
 public abstract class PlayerWeapon : MonoBehaviour
 {
-	public const int RIFLE = 0;
-	public const int SHOTGUN = 1;
-	public const int AUTOMATIC_RIFLE = 2;
-	public abstract int Type { get; }
-	public GameObject Model;
+    [SerializeField] protected Projectile BulletPrefab;
+    [SerializeField] protected Transform FirePoint;
+    [SerializeField] protected float Damage = 1f;
+    [SerializeField] protected float Reload = 1f;
+    [SerializeField] protected ParticleSystem Vfx;
+    [SerializeField] private GameObject _model;
 
-	protected virtual void Awake()
-	{
-		GetComponent<Player>().WeaponChanged += Change;
-	}
+    protected const int RIFLE = 0;
+    protected const int SHOTGUN = 1;
+    protected const int AUTOMATIC_RIFLE = 2;
+	protected const int GRENADE_LAUNCHER = 3;
+    protected float LastTime;
 
-	protected virtual void OnDestroy()
-	{
-		EventBus<PlayerInputMessage>.Unsub(Fire);
-	}
+    public abstract int Type { get; }
 
-	protected void Change(int type)
-	{
-		EventBus<PlayerInputMessage>.Unsub(Fire);
-		if (type == Type)
-		{
-			EventBus<PlayerInputMessage>.Sub(Fire);
-		}
+    protected virtual void Awake()
+    {
+        GetComponent<Player>().WeaponChanged += OnChanged;
 
-		Model.SetActive(type == Type);
-	}
+        LastTime = Time.time - Reload;
+    }
 
-	protected abstract void Fire(PlayerInputMessage message);
+    protected virtual void OnDisable()
+    {
+        EventBus<PlayerInputMessage>.Unsub(Fire);
+        GetComponent<Player>().WeaponChanged -= OnChanged;
+    }
+
+    protected void OnChanged(int type)
+    {
+        EventBus<PlayerInputMessage>.Unsub(Fire);
+
+        if (type == Type)
+        {
+            EventBus<PlayerInputMessage>.Sub(Fire);
+        }
+
+        _model.SetActive(type == Type);
+    }
+
+    protected virtual float GetDamage()
+    {
+        var totalDamage = Damage * GetComponent<Player>().DamageMultiplier;
+        return totalDamage;
+    }
+
+    protected abstract void Fire(PlayerInputMessage message);
 }

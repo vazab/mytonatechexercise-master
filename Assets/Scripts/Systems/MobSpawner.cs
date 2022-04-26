@@ -1,5 +1,4 @@
-﻿using System;
-using MyProject.Events;
+﻿using MyProject.Events;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

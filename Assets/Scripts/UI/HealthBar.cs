@@ -25,7 +25,7 @@ public class HealthBar : MonoBehaviour, IMobComponent
 		Bar.transform.rotation = Camera.main.transform.rotation;
 	}
 
-	private void OnHPChange(float health, float diff)
+	private void OnHPChange(float health)
 	{
 		var frac = health / maxHP;
 		Text.text = $"{health:####}/{maxHP:####}";
