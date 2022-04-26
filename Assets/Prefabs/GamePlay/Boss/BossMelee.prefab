@@ -142,8 +142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5668c32497544150ad2551b8876d3ad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackDistance: 1
-  DamageDistance: 3
+  AttackDistance: 2
+  DamageDistance: 2
   AttackDelay: 1.5
 --- !u!114 &-8563377209872306545
 MonoBehaviour:
@@ -655,7 +655,7 @@ PrefabInstance:
     - target: {fileID: -6057140222963153312, guid: d96114b088319404a81992f6e834d908, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 9fad74236c0088b4493ebd87f84c43d5, type: 2}
+      objectReference: {fileID: 9100000, guid: b7884a930e2fa494b92e9a43d4150d91, type: 2}
     - target: {fileID: -6057140222963153312, guid: d96114b088319404a81992f6e834d908, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0

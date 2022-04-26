@@ -13522,7 +13522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Prefabs:
-  - {fileID: 8621619010077877276, guid: 90c92dc34fb16384b840b21616b792f0, type: 3}
+  - {fileID: 8269111731931150050, guid: cc578725d82238e4fb1ef9f17ca88333, type: 3}
   - {fileID: 8621619010077877276, guid: 90c92dc34fb16384b840b21616b792f0, type: 3}
   - {fileID: 4318834868068814720, guid: fd202e94daaf41e4c998c63816729092, type: 3}
 --- !u!114 &1909521373
@@ -15704,11 +15704,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4676656098883435532, guid: 21e3a95f1983675429ca17362a0aad6c, type: 3}
       propertyPath: _health
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4676656098883435532, guid: 21e3a95f1983675429ca17362a0aad6c, type: 3}
       propertyPath: _maxHealth
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21e3a95f1983675429ca17362a0aad6c, type: 3}
